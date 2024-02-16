@@ -1,0 +1,1 @@
+Hi! At this project I'll be solving Python exercises, mainly on "Exercism.org".
