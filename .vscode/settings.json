@@ -4,7 +4,6 @@
     "editor.fontFamily": "JetBrains Mono",
     "editor.fontSize": 13,
     "editor.lineHeight": 1.8,
-    "editor.rulers": [80, 120],
     "editor.renderLineHighlight": "gutter",
     "workbench.editor.labelFormat": "short",
     "explorer.compactFolders": false,
