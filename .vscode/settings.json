@@ -5,6 +5,7 @@
     "editor.fontSize": 13,
     "editor.lineHeight": 1.8,
     "editor.renderLineHighlight": "gutter",
+    "editor.fontLigatures": true,
     "workbench.editor.labelFormat": "short",
     "explorer.compactFolders": false,
     "breadcrumbs.enabled": false,

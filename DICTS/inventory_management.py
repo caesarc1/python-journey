@@ -1,22 +1,21 @@
 """Functions to keep track and alter inventory."""
 
+from collections import Counter
 
-def create_inventory(items):
+
+def create_inventory(items: list) -> dict:
     """Create a dict that tracks the amount (count) of each element on the `items` list.
 
     :param items: list - list of items to create an inventory from.
     :return: dict - the inventory dictionary.
     """
 
-    inventory = {}
+    inventory: dict[str, int] = {}
 
-    for item in items:
-        inventory[item] = inventory.get(item, 0) + 1
-
-    return inventory
+    return add_items(inventory, items)
 
 
-def add_items(inventory, items):
+def add_items(inventory: dict, items: list) -> dict:
     """Add or increment items in inventory using elements from the items `list`.
 
     :param inventory: dict - dictionary of existing inventory.
@@ -24,15 +23,13 @@ def add_items(inventory, items):
     :return: dict - the inventory updated with the new items.
     """
 
-    # I couldn't figure out a way to reuse `create_inventory() here, despite using the same code.`
-
-    for item in items:
-        inventory[item] = inventory.get(item, 0) + 1
+    for item, count in Counter(items).items():
+        inventory[item] = inventory.setdefault(item, 0) + count
 
     return inventory
 
 
-def decrement_items(inventory, items):
+def decrement_items(inventory: dict, items: list) -> dict:
     """Decrement items in inventory using elements from the `items` list.
 
     :param inventory: dict - inventory dictionary.
@@ -47,7 +44,7 @@ def decrement_items(inventory, items):
     return inventory
 
 
-def remove_item(inventory, item):
+def remove_item(inventory: dict, item: list) -> dict:
     """Remove item from inventory if it matches `item` string.
 
     :param inventory: dict - inventory dictionary.
@@ -60,7 +57,7 @@ def remove_item(inventory, item):
     return inventory
 
 
-def list_inventory(inventory):
+def list_inventory(inventory: dict) -> list[tuple[str, int]]:
     """Create a list containing all (item_name, item_count) pairs in inventory.
 
     :param inventory: dict - an inventory dictionary.
