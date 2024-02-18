@@ -24,12 +24,9 @@ def add_items(inventory: dict, items: list) -> dict:
     """
 
     inventory = Counter(inventory)
-
     inventory.update(items)
 
     return inventory
-
-print(add_items({"coal":1}, ["wood", "iron", "coal", "wood"]))
 
 
 def decrement_items(inventory: dict, items: list) -> dict:
