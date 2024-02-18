@@ -1,5 +1,5 @@
 {
-    "python.analysis.typeCheckingMode": "off",
+    "python.analysis.typeCheckingMode": "basic",
     "python.REPL.enableREPLSmartSend": false,
     "editor.fontFamily": "JetBrains Mono",
     "editor.fontSize": 13,
