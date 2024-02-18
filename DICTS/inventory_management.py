@@ -23,10 +23,13 @@ def add_items(inventory: dict, items: list) -> dict:
     :return: dict - the inventory updated with the new items.
     """
 
-    for item, count in Counter(items).items():
-        inventory[item] = inventory.setdefault(item, 0) + count
+    inventory = Counter(inventory)
+
+    inventory.update(items)
 
     return inventory
+
+print(add_items({"coal":1}, ["wood", "iron", "coal", "wood"]))
 
 
 def decrement_items(inventory: dict, items: list) -> dict:
