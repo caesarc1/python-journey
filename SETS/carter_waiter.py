@@ -97,6 +97,7 @@ def compile_ingredients(dishes: list) -> set:
 
     return {ingredient for dish in dishes for ingredient in dish}
 
+
 def separate_appetizers(dishes: list, appetizers: list) -> list:
     """Determine which `dishes` are designated `appetizers` and remove them.
 
