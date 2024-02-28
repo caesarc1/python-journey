@@ -66,7 +66,7 @@ def categorize_dish(dish_name: str, dish_ingredients: set) -> str:
     }
 
     for name, category in categorys.items():
-        if category.issuperset(dish_ingredients):
+        if category >= set(dish_ingredients):
             return f"{dish_name}: {name}"
 
     return f"{dish_name}: Other"
@@ -83,7 +83,7 @@ def tag_special_ingredients(dish: tuple) -> tuple:
     SPECIAL_INGREDIENTS constant imported from `sets_categories_data.py`.
     """
 
-    return (dish[0], set(dish[1]).intersection(SPECIAL_INGREDIENTS))
+    return (dish[0], set(dish[1]) & SPECIAL_INGREDIENTS)
 
 
 def compile_ingredients(dishes: list) -> set:
@@ -95,13 +95,7 @@ def compile_ingredients(dishes: list) -> set:
     This function should return a `set` of all ingredients from all listed dishes.
     """
 
-    ingredients = set()
-
-    for dish in dishes:
-        ingredients.update(dish)
-
-    return ingredients
-
+    return {ingredient for dish in dishes for ingredient in dish}
 
 def separate_appetizers(dishes: list, appetizers: list) -> list:
     """Determine which `dishes` are designated `appetizers` and remove them.
@@ -114,7 +108,7 @@ def separate_appetizers(dishes: list, appetizers: list) -> list:
     Either list could contain duplicates and may require de-duping.
     """
 
-    return list(set(dishes).difference(set(appetizers)))
+    return list(set(dishes) - set(appetizers))
 
 
 def singleton_ingredients(dishes, intersection):
@@ -132,9 +126,4 @@ def singleton_ingredients(dishes, intersection):
     The function should return a `set` of ingredients that only appear in a single dish.
     """
 
-    singleton = set()
-
-    for dish in dishes:
-        singleton.update(dish - intersection)
-
-    return singleton
+    return {singleton for dish in dishes for singleton in dish - intersection}
