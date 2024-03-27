@@ -19,21 +19,21 @@ class Alien:
     collision_detection(other): Implementation TBD.
     """
 
-    health = 3
     total_aliens_created = 0
 
-    def __init__(self, x_coordinate, y_coordinate):
+    def __init__(self, x_coordinate: int, y_coordinate: int):
         self.x_coordinate = x_coordinate
         self.y_coordinate = y_coordinate
+        self.health = 3
         Alien.total_aliens_created += 1
 
-    def hit(self):
-        self.health -= max(1, 0)
+    def hit(self) -> None:
+        self.health -= 1
 
-    def is_alive(self):
+    def is_alive(self) -> bool:
         return self.health > 0
 
-    def teleport(self, x_coordinate, y_coordinate):
+    def teleport(self, x_coordinate: int, y_coordinate: int) -> None:
         self.x_coordinate = x_coordinate
         self.y_coordinate = y_coordinate
 
@@ -41,9 +41,8 @@ class Alien:
         pass
 
 
-def new_aliens_collection(*args):
-    return [
-        Alien(x_coordinate, y_coordinate)
-        for positions in args
-        for x_coordinate, y_coordinate in positions
-    ]
+def new_aliens_collection(args: list[tuple[int, int]]) -> list[Alien]:
+    return [Alien(x_coordinate, y_coordinate) for x_coordinate, y_coordinate in args]
+
+alien_start_positions = [(4, 7), (-1, 0)]
+new_aliens_collection(alien_start_positions)
